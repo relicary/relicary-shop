@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FrontNavbarComponent } from '../../components/front-navbar/front-navbar.component';
+import { ProductCardComponent } from '../../../products/components/product-card/product-card.component';
 
 @Component({
   selector: 'app-store-front-layout',
