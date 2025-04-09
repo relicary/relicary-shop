@@ -9,7 +9,7 @@
       "@auth/*": ["./src/app/auth/*"],
       "@products/*": ["./src/app/products/*"],
       "@shared/*": ["./src/app/shared/*"],
-      "@store-front*/": ["./src/app/store-front/*"]
+      "@store-front/*": ["./src/app/store-front/*"]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,
