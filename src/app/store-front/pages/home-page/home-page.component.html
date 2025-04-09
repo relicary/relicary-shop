@@ -1,8 +1,13 @@
 <section class="m-2">
-  <h1 class="text-3xl font-bold font-montserrat">All products</h1>
+  <h1 class="text-3xl font-bold font-montserrat">
+    All products {{ currentPage() }}
+  </h1>
   <h2 class="text-xl mb-5">For all tastes</h2>
 
-  <shared-pagination [pages]="productsResource.value()?.pages ?? 0" />
+  <shared-pagination
+    [pages]="productsResource.value()?.pages ?? 0"
+    [currentPage]="4"
+  />
 
   <section class="m-2">
     <div
