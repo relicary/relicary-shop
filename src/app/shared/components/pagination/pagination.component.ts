@@ -1,8 +1,9 @@
 import { Component, computed, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'shared-pagination',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.css',
 })
