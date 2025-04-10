@@ -1,12 +1,12 @@
 <section class="m-2">
   <h1 class="text-3xl font-bold font-montserrat">
-    All products {{ currentPage() }}
+    All products {{ paginationService.currentPage() }}
   </h1>
   <h2 class="text-xl mb-5">For all tastes</h2>
 
   <shared-pagination
     [pages]="productsResource.value()?.pages ?? 0"
-    [currentPage]="currentPage()"
+    [currentPage]="paginationService.currentPage()"
   />
 
   <section class="m-2">
