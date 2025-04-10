@@ -34,7 +34,6 @@ export class ProductCarouselComponent implements AfterViewInit {
 
     if (!element) return;
 
-    console.log({ element });
     const swiper = new Swiper(element, {
       // Optional parameters
       direction: 'horizontal',
