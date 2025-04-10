@@ -28,9 +28,9 @@ export class HomePageComponent {
   );
 
   productsResource = rxResource({
-    request: () => ({}),
+    request: () => ({ page: this.currentPage() - 1 }),
     loader: ({ request }) => {
-      return this.productsService.getProducts({});
+      return this.productsService.getProducts({ offset: request.page * 9 });
     },
   });
 }
