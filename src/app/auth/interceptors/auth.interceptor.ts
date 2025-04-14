@@ -13,8 +13,6 @@ export function authInterceptor(
 ): Observable<HttpEvent<unknown>> {
   const token = inject(AuthService).token();
 
-  console.log({ token });
-
   const newReq = req.clone({
     headers: req.headers.append('Authorization', `Bearer ${token}`),
   });
