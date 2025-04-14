@@ -46,19 +46,8 @@ export class AuthService {
         password: pwd,
       })
       .pipe(
-        tap((resp) => {
-          this._authStatus.set('authenticated');
-          this._user.set(resp.user);
-          this._token.set(resp.token);
-          localStorage.setItem('token', resp.token);
-        }),
-        map(() => true),
-        catchError((error: any) => {
-          this._user.set(null);
-          this._token.set(null);
-          this._authStatus.set('not-authenticated');
-          return of(false);
-        })
+        map((resp) => this.handleAuthSuccess(resp)),
+        catchError((error: any) => this.handleAuthError(error))
       );
   }
 
@@ -66,6 +55,7 @@ export class AuthService {
     const token = localStorage.getItem('token');
 
     if (!token) {
+      this.logout();
       return of(false);
     }
 
@@ -76,19 +66,30 @@ export class AuthService {
         },
       })
       .pipe(
-        tap((resp) => {
-          this._authStatus.set('authenticated');
-          this._user.set(resp.user);
-          this._token.set(resp.token);
-          localStorage.setItem('token', resp.token);
-        }),
-        map(() => true),
-        catchError((error: any) => {
-          this._user.set(null);
-          this._token.set(null);
-          this._authStatus.set('not-authenticated');
-          return of(false);
-        })
+        map((resp) => this.handleAuthSuccess(resp)),
+        catchError((error: any) => this.handleAuthError(error))
       );
+  }
+
+  logout() {
+    this._user.set(null);
+    this._token.set(null);
+    this._authStatus.set('not-authenticated');
+
+    localStorage.removeItem('token');
+  }
+
+  private handleAuthSuccess({ user, token }: AuthResponse): boolean {
+    this._authStatus.set('authenticated');
+    this._user.set(user);
+    this._token.set(token);
+    localStorage.setItem('token', token);
+
+    return true;
+  }
+
+  private handleAuthError(error: any): Observable<boolean> {
+    this.logout();
+    return of(false);
   }
 }
