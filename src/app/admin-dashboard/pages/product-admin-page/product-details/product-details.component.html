@@ -91,7 +91,14 @@
 
     <div class="grid grid-cols-6 gap-2">
       @for (size of sizes; track size) {
-      <button class="btn btn-sm btn-outline" type="button">{{ size }}</button>
+      <button
+        class="btn btn-sm"
+        (click)="onSizeChange(size)"
+        [class.btn-info]="productForm.value.sizes?.includes(size)"
+        type="button"
+      >
+        {{ size }}
+      </button>
       }
     </div>
   </div>
