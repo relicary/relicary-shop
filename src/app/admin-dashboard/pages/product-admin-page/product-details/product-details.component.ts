@@ -62,6 +62,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.productForm.value);
+    const isValid = this.productForm.valid;
+    console.log(this.productForm.value, { isValid });
   }
 }
