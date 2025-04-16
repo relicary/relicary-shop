@@ -6,4 +6,4 @@
 
 <div class="divider"></div>
 
-<product-table [products]="[]" />
+<product-table [products]="productsResource.value()?.products ?? []" />
