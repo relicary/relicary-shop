@@ -13,7 +13,9 @@
       placeholder="Title"
       class="input input-bordered w-full"
       formControlName="title"
+      [class.border-red-500]="productForm.get('title')?.errors ?? false"
     />
+    <form-error-label [control]="productForm.get('title')!" />
 
     <input
       type="text"
