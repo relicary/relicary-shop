@@ -6,4 +6,11 @@
 
 <div class="divider"></div>
 
+<div class="flex gap-2 items-center h-20">
+  <shared-pagination
+    [pages]="productsResource.value()?.pages ?? 0"
+    [currentPage]="paginationService.currentPage()"
+  />
+</div>
+
 <product-table [products]="productsResource.value()?.products ?? []" />
