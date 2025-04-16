@@ -55,10 +55,38 @@
     />
 
     <div class="grid grid-cols-4 gap-2">
-      <button class="btn btn-sm btn-primary" type="button">Male</button>
-      <button class="btn btn-sm btn-accent" type="button">Female</button>
-      <button class="btn btn-sm btn-warning" type="button">Kid</button>
-      <button class="btn btn-sm btn-secondary" type="button">Unisex</button>
+      <button
+        class="btn btn-sm"
+        [class.btn-primary]="productForm.value.gender === 'men'"
+        (click)="productForm.patchValue({ gender: 'men' })"
+        type="button"
+      >
+        Male
+      </button>
+      <button
+        class="btn btn-sm"
+        [class.btn-accent]="productForm.value.gender === 'women'"
+        (click)="productForm.patchValue({ gender: 'women' })"
+        type="button"
+      >
+        Female
+      </button>
+      <button
+        class="btn btn-sm"
+        [class.btn-warning]="productForm.value.gender === 'kid'"
+        (click)="productForm.patchValue({ gender: 'kid' })"
+        type="button"
+      >
+        Kid
+      </button>
+      <button
+        class="btn btn-sm"
+        [class.btn-secondary]="productForm.value.gender === 'unisex'"
+        (click)="productForm.patchValue({ gender: 'unisex' })"
+        type="button"
+      >
+        Unisex
+      </button>
     </div>
 
     <div class="grid grid-cols-6 gap-2">
