@@ -4,6 +4,7 @@ import { ProductCarouselComponent } from '../../../../products/components/produc
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormUtils } from '@utils/form.utils';
 import { FormErrorLabelComponent } from '../../../../shared/components/form-error-label/form-error-label.component';
+import { ProductsService } from '@products/services/products.service';
 
 @Component({
   selector: 'product-details',
@@ -17,6 +18,7 @@ import { FormErrorLabelComponent } from '../../../../shared/components/form-erro
 })
 export class ProductDetailsComponent implements OnInit {
   product = input.required<Product>();
+  productService = inject(ProductsService);
 
   fb = inject(FormBuilder);
 
@@ -78,5 +80,9 @@ export class ProductDetailsComponent implements OnInit {
     };
 
     console.log({ productLike });
+
+    this.productService
+      .updateProduct(this.product().id, productLike)
+      .subscribe((product) => console.log('Product updated'));
   }
 }
