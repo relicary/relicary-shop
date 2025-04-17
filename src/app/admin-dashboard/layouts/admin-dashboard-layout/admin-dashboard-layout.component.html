@@ -92,11 +92,16 @@
           </div>
         </a>
         <div class="divider my-2"></div>
-        <button class="btn btn-ghost text-accent w-full">Logout</button>
+        <button
+          class="btn btn-ghost text-accent w-full"
+          (click)="authService.logout()"
+        >
+          Logout
+        </button>
       </div>
     </div>
   </div>
-  <div class="flex-1 ml-64 pt-5 px-5" (click)="authService.logout()">
+  <div class="flex-1 ml-64 pt-5 px-5">
     <router-outlet />
   </div>
 </div>
