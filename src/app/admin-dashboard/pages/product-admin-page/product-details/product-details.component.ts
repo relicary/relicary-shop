@@ -27,6 +27,9 @@ export class ProductDetailsComponent implements OnInit {
 
   wasSaved = signal(false);
 
+  imageFileList: FileList | undefined = undefined;
+  tmpImages = signal<string[]>([]);
+
   productForm = this.fb.group({
     title: ['', Validators.required],
     description: ['', Validators.required],
@@ -100,5 +103,16 @@ export class ProductDetailsComponent implements OnInit {
     setTimeout(() => {
       this.wasSaved.set(false);
     }, 3000);
+  }
+
+  onFilesChanged(event: Event) {
+    const files: FileList | null = (event.target as HTMLInputElement).files;
+    this.imageFileList = files ?? undefined;
+
+    const imageUrls = Array.from(files ?? []).map((file) =>
+      URL.createObjectURL(file)
+    );
+
+    this.tmpImages.set(imageUrls);
   }
 }
